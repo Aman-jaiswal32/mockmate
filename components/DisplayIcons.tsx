@@ -16,4 +16,4 @@ const DisplayIcons = async ({techStack}:TechIconProps) => {
     )
 }
 
-export default DisplayIcons
+export default DisplayIcons;

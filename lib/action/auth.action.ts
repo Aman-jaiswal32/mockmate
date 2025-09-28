@@ -50,7 +50,7 @@ export async function signIn(params: SignInParams){
         if(!userRecord){
             return{
                 success: false,
-                message: 'User dpes not exist. Create an account'
+                message: 'User does not exist. Create an account'
             }
         }
 
@@ -97,7 +97,7 @@ export async function getCurrentUser(): Promise<User | null> {
         const userRecord = await db.collection('users')
             .doc(decodedClaims.uid).get();
 
-        if(!userRecord) return null;
+        if(!userRecord.exists) return null;
 
         return {
             ...userRecord.data(),

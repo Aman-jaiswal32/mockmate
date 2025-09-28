@@ -22,4 +22,4 @@ const Rootlayout = async ({children}: {children: ReactNode}) => {
   )
 }
 
-export default Rootlayout
+export default Rootlayout;
