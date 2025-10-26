@@ -12,7 +12,6 @@ export default function Navbar() {
                 <h2 className="text-primary-100 font-bold">MockMate</h2>
             </Link>
 
-            {/* Logout Button */}
             <LogoutButton />
         </nav>
     );

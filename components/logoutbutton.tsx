@@ -41,19 +41,16 @@ export default function LogoutButton() {
 
     const handleLogout = async () => {
         try {
-            // 1️⃣ Log out from Firebase
+
             await signOut(auth);
 
-            // 2️⃣ Also call your backend logout API (if needed for clearing cookies/session)
             const res = await fetch("/api/logout", { method: "POST" });
             const data = await res.json();
 
             if (!res.ok || !data.success) throw new Error(data.error || "Logout failed");
 
-            // 3️⃣ Show success message
             toast.success("Logged out successfully!");
 
-            // 4️⃣ Redirect to sign-in page, replacing history
             router.replace("/sign-in");
         } catch (err) {
             console.error(err);
