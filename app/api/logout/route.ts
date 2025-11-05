@@ -1,4 +1,3 @@
-// app/api/logout/route.ts
 import { NextResponse } from "next/server";
 
 export async function POST() {
@@ -10,8 +9,8 @@ export async function POST() {
         response.cookies.set({
             name: "session",
             value: "",
-            maxAge: 0,       // this expires the cookie
-            path: "/",       // important: match the path of the cookie
+            maxAge: 0,
+            path: "/",
         });
 
         return response;

@@ -20,7 +20,6 @@ function AuthActionHandler() {
     const [loading, setLoading] = useState(false);
     const [verified, setVerified] = useState(false);
 
-    // ✅ Handle Email Verification
     useEffect(() => {
         if (mode === "verifyEmail" && oobCode) {
             setLoading(true);
@@ -38,7 +37,6 @@ function AuthActionHandler() {
         }
     }, [mode, oobCode, router]);
 
-    // ✅ Handle Password Reset
     const handleResetPassword = async () => {
         if (!oobCode) {
             toast.error("Invalid or expired password reset link.");
@@ -65,7 +63,6 @@ function AuthActionHandler() {
         }
     };
 
-    // ✅ Loading or Verification Success Screen
     if (mode === "verifyEmail") {
         return (
             <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white px-4">
@@ -92,7 +89,6 @@ function AuthActionHandler() {
         );
     }
 
-    // ✅ Password Reset UI
     if (mode === "resetPassword") {
         return (
             <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white px-4">
@@ -148,7 +144,6 @@ function AuthActionHandler() {
         );
     }
 
-    // ✅ Default (Invalid or No Mode)
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white">
             <div className="card-border lg:min-w-[500px] card py-8 px-10 text-center">
@@ -170,7 +165,6 @@ function AuthActionHandler() {
     );
 }
 
-// ✅ Wrap in Suspense for Next.js SearchParams
 export default function AuthActionPage() {
     return (
         <Suspense fallback={<div className="text-white text-center mt-20">Loading...</div>}>
