@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, Suspense } from "react"; // ✅ Added Suspense
 import { confirmPasswordReset } from "firebase/auth";
 import { auth } from "@/Firebase/client";
 import { Button } from "@/components/ui/button";
@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import Image from "next/image";
 import { Eye, EyeOff } from "lucide-react";
 
-export default function ResetPasswordPage() {
+function ResetPasswordForm() {
     const searchParams = useSearchParams();
     const router = useRouter();
     const oobCode = searchParams.get("oobCode");
@@ -61,10 +61,10 @@ export default function ResetPasswordPage() {
                 </h3>
 
                 {/* Password Fields */}
-                <div className="w-full space-y-5 form">
+                <div className="flex flex-col gap-5">
                     {/* New Password */}
                     <div className="relative flex flex-col gap-1">
-                        <label>
+                        <label className="text-sm font-medium text-gray-300">
                             New Password
                         </label>
                         <input
@@ -117,5 +117,14 @@ export default function ResetPasswordPage() {
                 </div>
             </div>
         </div>
+    );
+}
+
+// ✅ Wrap in Suspense to fix the warning
+export default function ResetPasswordPage() {
+    return (
+        <Suspense fallback={<div className="text-white">Loading...</div>}>
+            <ResetPasswordForm />
+        </Suspense>
     );
 }
