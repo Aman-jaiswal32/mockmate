@@ -675,7 +675,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
                 await signIn({ email, idToken });
 
                 toast.success("Signed in successfully.");
-                router.push("/");
+                router.push("/home");
             }
         } catch (error: any) {
             console.error(error);
@@ -721,7 +721,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
             }
 
             toast.success("Signed in with Google successfully!");
-            router.push("/");
+            router.push("/home");
         } catch (error: any) {
             console.error(error);
             toast.error("Google sign-in failed. Please try again.");
@@ -750,7 +750,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
             }
 
             toast.success("Signed in with GitHub successfully!");
-            router.push("/");
+            router.push("/home");
         } catch (error: any) {
             console.error(error);
             toast.error("GitHub sign-in failed. Please try again.");

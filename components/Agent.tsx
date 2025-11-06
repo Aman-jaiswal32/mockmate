@@ -75,14 +75,14 @@ const Agent = ({ userName, userId, type, interviewId, questions }: AgentProps) =
             router.push(`/interview/${interviewId}/feedback`);
         }else{
             console.log('Error');
-            router.push('/');
+            router.push('/home');
         }
     }
 
     useEffect(() => {
         if(callStatus === CallStatus.FINISHED){
             if(type === 'generate'){
-                router.push('/');
+                router.push('/home');
             }else{
                 handleGenerateFeedback(messages);
             }
@@ -128,7 +128,7 @@ const Agent = ({ userName, userId, type, interviewId, questions }: AgentProps) =
         <>
             <div className="absolute top-6 left-6 z-50">
                 <button
-                    onClick={() => router.push("/")}
+                    onClick={() => router.push("/home")}
                     className="flex items-center gap-2 px-3 py-0.5 bg-[#0f0f0f] text-white border border-[#2b2b2b] rounded-full font-medium hover:bg-[#1a1a1a] hover:text-[#d6c8ff] hover:border-[#d6c8ff] hover:shadow-[0_0_10px_#d6c8ff] transition-all duration-300"
                 >
                     <span className="text-lg">←</span>

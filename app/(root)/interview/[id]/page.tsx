@@ -13,7 +13,7 @@ const page = async ({params} : RouteParams) => {
     if (!user) redirect("/sign-in");
     const interview =  await getInterviewById(id);
 
-    if(!interview) redirect('/');
+    if(!interview) redirect('/home');
     return (
         <>
             <div className="flex flex-row gap-4 justify-between">
