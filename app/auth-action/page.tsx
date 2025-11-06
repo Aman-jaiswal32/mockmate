@@ -7,6 +7,7 @@ import { auth } from "@/Firebase/client";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { Eye, EyeOff } from "lucide-react";
 
 function AuthActionHandler() {
     const searchParams = useSearchParams();
@@ -19,6 +20,9 @@ function AuthActionHandler() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [verified, setVerified] = useState(false);
+
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     useEffect(() => {
         if (mode === "verifyEmail" && oobCode) {
@@ -105,30 +109,46 @@ function AuthActionHandler() {
 
                     {/* Password Fields */}
                     <div className="flex flex-col gap-5">
+                        {/* New Password */}
                         <div className="relative flex flex-col gap-1">
                             <label className="text-sm font-medium text-gray-300">
                                 New Password
                             </label>
                             <input
-                                type="password"
+                                type={showPassword ? "text" : "password"}
                                 placeholder="Enter new password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="w-full bg-[#1C1C1C] text-white placeholder:text-gray-400 rounded-full px-4 py-3 border border-[#2C2C2C] focus:outline-none focus:ring-2 focus:ring-[#D6C8FF] transition-all"
+                                className="w-full bg-[#1C1C1C] text-white placeholder:text-gray-400 rounded-full px-4 py-3 border border-[#2C2C2C] focus:outline-none focus:ring-2 focus:ring-[#D6C8FF] transition-all pr-10"
                             />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute right-4 top-[42px] text-gray-400 hover:text-white"
+                            >
+                                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                            </button>
                         </div>
 
+                        {/* Confirm Password */}
                         <div className="relative flex flex-col gap-1">
                             <label className="text-sm font-medium text-gray-300">
                                 Confirm Password
                             </label>
                             <input
-                                type="password"
+                                type={showConfirmPassword ? "text" : "password"}
                                 placeholder="Confirm new password"
                                 value={confirmPassword}
                                 onChange={(e) => setConfirmPassword(e.target.value)}
-                                className="w-full bg-[#1C1C1C] text-white placeholder:text-gray-400 rounded-full px-4 py-3 border border-[#2C2C2C] focus:outline-none focus:ring-2 focus:ring-[#D6C8FF] transition-all"
+                                className="w-full bg-[#1C1C1C] text-white placeholder:text-gray-400 rounded-full px-4 py-3 border border-[#2C2C2C] focus:outline-none focus:ring-2 focus:ring-[#D6C8FF] transition-all pr-10"
                             />
+                            <button
+                                type="button"
+                                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                className="absolute right-4 top-[42px] text-gray-400 hover:text-white"
+                            >
+                                {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                            </button>
                         </div>
 
                         <Button
