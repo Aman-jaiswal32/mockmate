@@ -126,6 +126,15 @@ const Agent = ({ userName, userId, type, interviewId, questions }: AgentProps) =
 
     return (
         <>
+            <div className="absolute top-6 left-6 z-50">
+                <button
+                    onClick={() => router.push("/")}
+                    className="flex items-center gap-2 px-3 py-0.5 bg-[#0f0f0f] text-white border border-[#2b2b2b] rounded-full font-medium hover:bg-[#1a1a1a] hover:text-[#d6c8ff] hover:border-[#d6c8ff] hover:shadow-[0_0_10px_#d6c8ff] transition-all duration-300"
+                >
+                    <span className="text-lg">←</span>
+                </button>
+            </div>
+
             <div className="call-view">
                 <div className="card-interviewer">
                     <div className="avatar">
@@ -153,7 +162,7 @@ const Agent = ({ userName, userId, type, interviewId, questions }: AgentProps) =
                     </div>
                 </div>
             )}
-            <div className="w-full flex justify-center">
+            <div className="w-full flex justify-center mt-2 lg:mt-10">
                 {callStatus !== 'ACTIVE' ? (
                     <button className='relative btn-call' onClick={handleCall}>
             <span className={cn('absolute animate-ping rounded-full opacity-75', callStatus !== 'CONNECTING' && 'hidden')}
