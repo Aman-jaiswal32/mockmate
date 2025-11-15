@@ -7,14 +7,13 @@ import { Button } from "@/components/ui/button";
 export default function LandingPage() {
     return (
         <main className="relative min-h-screen bg-[#050505] text-white flex flex-col overflow-hidden">
-            {/* ===== GLOBAL BACKGROUND GLOW ===== */}
+
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[400px] sm:w-[600px] md:w-[700px] h-[400px] sm:h-[600px] md:h-[700px] bg-gradient-to-b from-[#a3a9ff33] to-transparent blur-[120px] sm:blur-[140px] opacity-50" />
                 <div className="absolute top-[25%] left-1/2 -translate-x-1/2 w-[600px] sm:w-[800px] md:w-[900px] h-[600px] sm:h-[800px] md:h-[900px] bg-gradient-to-r from-[#a3a9ff44] to-[#ff9bd644] blur-[160px] opacity-60 animate-pulse-slow" />
                 <div className="absolute bottom-[-200px] left-1/2 -translate-x-1/2 w-[400px] sm:w-[600px] md:w-[700px] h-[400px] sm:h-[600px] md:h-[700px] bg-gradient-to-t from-[#ff9bd633] to-transparent blur-[120px] opacity-40" />
             </div>
-
-            {/* ===== NAVBAR ===== */}
+            
             <nav className="flex justify-between items-center flex-wrap px-6 sm:px-10 md:px-20 lg:px-40 py-5 border-b border-[#1a1a1a] relative z-20">
                 {/* Logo */}
                 <div className="flex items-center gap-2 flex-shrink-0">
